@@ -1,0 +1,12 @@
+import { Transform } from 'class-transformer';
+
+export const Trim = () =>
+  Transform(({ value }) => (typeof value === 'string' ? value.trim() : value));
+
+export const NormalizeEmail = () =>
+  Transform(({ value }) =>
+    typeof value === 'string' ? value.trim().toLowerCase() : value,
+  );
+
+// Al menos una minúscula, una mayúscula y un número
+export const STRONG_PASSWORD = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/;
